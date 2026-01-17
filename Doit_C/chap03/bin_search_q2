@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int linear_search(int x[], int n, int key){
+    
+ for (int i = 0; i<n ; i++){
+    printf("  |");
+    for (int j = 0; j < i; j++){
+        printf("  ");
+    }printf(" *\n");
+    printf("%3d|",i);
+    for (int j = 0; j < n; j++){
+        printf(" %d",x[j]);
+    }printf("\n");
+
+    if (x[i] == key){
+        return i;
+        
+    }
+ }
+ return -1;
+}
+
+
+int main(void){
+    printf("  | 0 1 2 3 4 5 6 ");
+    printf("-------------------");
+    int x[] = {6, 4, 3, 2, 1, 9, 8};
+    int n = sizeof(x) / sizeof(x[0]);
+    int key = 3;
+
+    int idx = linear_search(x,n,key);
+
+    if (idx == -1){
+        puts("검색 실패\n");
+    }else 
+    printf("%d는 x[%d]에 존재합니다", key, idx);
+
+    return 0;
+
+}
