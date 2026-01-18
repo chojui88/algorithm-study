@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int bin_search2(const int a[], int n, int key){
+int pl = 0;
+int pr=n-1;
+int pc;
+
+while (pl <= pr){
+    pc = (pl + pc )/2;
+
+if (a[pc] == key){
+        for (int j = 1; j <= pc; j++){
+            if(a[pc] == a[pc-j] && pc>=0)
+                pc--;
+            else
+                return pc;
+        }
+        
+    }
+    if (a[pc] < key){
+        pl = pc + 1;
+    }
+    if (a[pc] > key){
+        pr = pc -1;
+    }
+}
+return -1;
+    
+}
+int main(){
+    int arr[] = {1, 2, 4, 4, 4, 5, 7, 9};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    int key = 4;
+
+    int idx = bin_search2(arr, n, key);
+
+    if (idx != -1)
+        printf("Key %d found at index %d\n", key, idx);
+    else
+        printf("Key %d not found\n", key);
+
+    return 0;
+}
+
+
