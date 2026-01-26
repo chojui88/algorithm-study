@@ -25,3 +25,33 @@ static void __mergesort(int a[], int left, int right){
         }
     }
 }
+
+int mergesort(int a[], int n){
+    if((buff = calloc(n, sizeof(int)))==NULL)
+    return -1;
+    __mergesort(a, 0, n-1);
+    free(buff);
+    return 0;
+}
+
+int main(void){
+    int i, nx;
+    int *x;
+    puts("병합 정렬");
+    print("요소 개수 : ");
+    scanf("%d" ,&nx);
+    x = calloc(nx, sizeof(int));
+
+    for(i = 0; i<nx; i++){
+        print("x[%d] : ", i);
+        scanf("%d", &x[i]);
+    }
+    mergesort(x,nx);
+    puts("오름차순으로 정렬했습니다.");
+    for(i = 0; i <nx; i++){
+        print("x[%d] = %d\n", i , x[i]);
+
+    }free(x);
+
+    return 0;
+}
